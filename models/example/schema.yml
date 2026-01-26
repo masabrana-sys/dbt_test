@@ -1,21 +1,23 @@
 
 version: 2
 
-models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+sources:
+  - name: ani_staging
+    description: "Staging database for GA analytics regression testing"
+    database: STAGING
+    schema: ANI_TESTS_SCHEMA__GA_ANALYTICS_REGRESSION__ANI
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
+    tables:
+      - name: order_items
+        description: "Line-level order items from GA analytics pipeline"
+
+        columns:
+          - name: order_id
+            description: "Unique identifier for the order"
             tests:
-                - unique
-                - not_null
+              - not_null
+
+          - name: order_item_id
+            description: "Unique identifier for the item"
+            tests:
+              - not_null
