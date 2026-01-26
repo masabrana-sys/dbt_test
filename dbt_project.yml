@@ -9,5 +9,5 @@ clean-targets:
 
 models:
   STAGING:        # Match your database name
-    +schema: dbt_mrana # Force all models into PUBLIC schema
-    +materialized: incremental  # Use incremental by default
+    +schema: dbt_mrana 
+    +materialized: table  # Use incremental by default

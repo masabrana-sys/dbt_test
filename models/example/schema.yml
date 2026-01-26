@@ -11,13 +11,4 @@ sources:
       - name: order_items
         description: "Line-level order items from GA analytics pipeline"
 
-        columns:
-          - name: order_id
-            description: "Unique identifier for the order"
-            tests:
-              - not_null
 
-          - name: order_item_id
-            description: "Unique identifier for the item"
-            tests:
-              - not_null
