@@ -1,26 +1,18 @@
 with customers as (
-
     select * from {{ ref('sgt_customer__jaffle_shop_raw') }}
-
 ),
-
 orders as (
-
     select * from {{ ref('sgt_orders__jaffle_shop_raw') }}
-
-
 ),
-
 customer_orders as (
 
     select
-        customer as customer_id,
+        customer_id,
         min(ordered_at) as first_order_date,
         max(ordered_at) as most_recent_order_date,
-        count(id) as number_of_orders
+        count(order_id) as number_of_orders
 
     from orders
-
     group by 1
 
 ),
