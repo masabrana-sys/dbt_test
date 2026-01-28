@@ -2,7 +2,6 @@ name: 'snowflake_test'   # Project name (just metadata)
 version: '1.0'           # Project version (metadata)
 
 models:
-  models_new:
     staging:
       +materialized: view
     marts:
