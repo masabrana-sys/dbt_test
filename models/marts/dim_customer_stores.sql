@@ -20,7 +20,8 @@ store_sales as (
 
 final as (
     select
-        s.name
+        s.name as store_name,
+        ss.number_of_orders
     from store_sales ss
     join stores s on ss.store_id = s.store_id
 )
