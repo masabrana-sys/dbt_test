@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with customers as (
     select * from {{ ref('sgt_customer__jaffle_shop_raw') }}
 ),

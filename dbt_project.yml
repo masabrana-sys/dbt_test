@@ -1,13 +1,8 @@
 name: 'snowflake_test'   # Project name (just metadata)
 version: '1.0'           # Project version (metadata)
 
-model-paths: ["models"]  # Where your model SQL files live
-target-path: "target"    # Where dbt builds compiled SQL and artifacts
-clean-targets:
-  - "target"
-  - "dbt_modules"
-
 models:
-  STAGING:        # Match your database name
-    +schema: dbt_mrana 
-    +materialized: table  # Use incremental by default
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
