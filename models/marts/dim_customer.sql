@@ -10,6 +10,7 @@ customer_orders as (
 
     select
         customer_id,
+        order_status,
         min(ordered_at) as first_order_date,
         max(ordered_at) as most_recent_order_date,
         count(order_id) as number_of_orders
@@ -27,10 +28,9 @@ final as (
         customers.name,
         customer_orders.first_order_date,
         customer_orders.most_recent_order_date,
+        customer_orders.order_status,
         coalesce(customer_orders.number_of_orders, 0) as number_of_orders
-
     from customers
-
     left join customer_orders using (customer_id)
 
 )
