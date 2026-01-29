@@ -1,16 +1,14 @@
 sources:
   - name: JAFFLE_SHOP_RAW
-    config: 
-      freshness:
-        warn_after:
-          count: 12
-          period: day
-      loaded_at_field: ordered_at
     database: STAGING
     schema: JAFFLE_SHOP_RAW
     tables:
       - name: RAW_ORDERS
+        config: 
+          freshness:
+            warn_after:
+              count: 12
+              period: day
+          loaded_at_field: ordered_at
       - name: RAW_CUSTOMERS
-        freshness: null
       - name: RAW_STORES
-        freshness: null
