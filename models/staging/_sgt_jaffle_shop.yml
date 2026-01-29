@@ -4,7 +4,7 @@ models:
       - name: customer_id
         data_tests:
           - unique
-          - not_null        
+          - not_null
   - name: sgt_orders__jaffle_shop_raw
     columns:
       - name: order_id
@@ -14,7 +14,13 @@ models:
       - name: order_status
         data_tests:
           - accepted_values:
-              values: 
-                - return_pending
-                - returned
+              values:
                 - completed
+                - returned
+                - return_pending
+      - name: customer_id
+        data_tests:
+        - relationships:
+            field: customer_id
+            to: ref('sgt_customer__jaffle_shop_raw')
+
