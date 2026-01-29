@@ -1,0 +1,20 @@
+models:
+  - name: sgt_customer__jaffle_shop_raw
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+          - not_null        
+  - name: sgt_orders__jaffle_shop_raw
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              values: 
+                - return_pending
+                - returned
+                - completed
