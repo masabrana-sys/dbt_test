@@ -4,5 +4,5 @@
         ordered_at, 
         store_id
 
-    from jaffle_shop_raw.raw_orders
+    from {{ source('JAFFLE_SHOP_RAW', 'RAW_ORDERS') }}
 

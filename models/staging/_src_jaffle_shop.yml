@@ -3,6 +3,6 @@ sources:
     database: STAGING
     schema: JAFFLE_SHOP_RAW
     tables:
-      - name: raw_orders
+      - name: RAW_ORDERS
       - name: RAW_CUSTOMERS
-      - name: raw_stores
+      - name: RAW_STORES

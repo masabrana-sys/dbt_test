@@ -1,4 +1,4 @@
 select 
     id as store_id, 
     name
-    from jaffle_shop_raw.raw_stores
+ from {{ source('JAFFLE_SHOP_RAW', 'RAW_STORES') }}
