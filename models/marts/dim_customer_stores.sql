@@ -1,4 +1,4 @@
-{{ config(materialized='table') }}
+-- {{ config(materialized='table') }}
 
 with orders as (
     select * from {{ ref('sgt_orders__jaffle_shop_raw') }}
