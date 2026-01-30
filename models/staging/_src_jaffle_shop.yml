@@ -5,28 +5,26 @@ sources:
     tables:
       - name: RAW_ORDERS
         columns:
-        # Data tests
           - name: id
             data_tests:
               - unique
               - not_null
-      # Freshness Test              
         config: 
           freshness:
             warn_after:
               count: 12
               period: day
           loaded_at_field: ordered_at
+
       - name: RAW_CUSTOMERS
-          # Data tests
         columns:
           - name: id
             data_tests:
               - unique
               - not_null            
+
       - name: RAW_STORES
         columns:
-        # Data tests
           - name: id
             data_tests:
               - unique
