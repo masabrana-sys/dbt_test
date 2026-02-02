@@ -10,7 +10,7 @@ renamed as (
 
     select
         id,
-        orderid,
+        orderid as order_id,
         paymentmethod,
         status,
         amount,
