@@ -6,9 +6,15 @@ where status = 'success'
 , pivoted as 
 (
 select orderid, 
-sum(case when paymentmethod = 'bank_transfer' then amount else 0 end) as bank_transfer_amount
-from payments
-group by 1
+    {% set payment_mehtods= ['coupon','credit_card','gift_card','bank_transfer'] %}
+
+    {% for payment_mehtod in payment_mehtods %}
+        sum(case when paymentmethod = '{{payment_mehtod}}' then amount else 0 end) as {{payment_mehtod}}_amount,
+        
+    {% endfor %}
+
+    from payments
+    group by 1
 )
 
 select * from pivoted
