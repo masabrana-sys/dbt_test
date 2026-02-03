@@ -9,7 +9,7 @@ select order_id,
     {% set payment_mehtods= ['coupon','credit_card','gift_card','bank_transfer'] %}
 
     {% for payment_mehtod in payment_mehtods %}
-        sum(case when paymentmethod = '{{payment_mehtod}}' then amount else 0 end) as {{payment_mehtod}}_amount
+        sum(case when payment_method = '{{payment_mehtod}}' then amount else 0 end) as {{payment_mehtod}}_amount
         
         {% if not loop.last %}
             ,
