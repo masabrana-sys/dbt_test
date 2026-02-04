@@ -1,8 +1,12 @@
 name: 'snowflake_test'   # Project name (just metadata)
-version: '1.0'           # Project version (metadata)
+version: '1.0'          # Project version (metadata)
 
 models:
-    staging:
-      +materialized: view
-    marts:
-      +materialized: table
+  staging:
+    +materialized: view
+  marts:
+    +materialized: table
+
+vars:
+  snowflake_spend:
+    enabled: true
