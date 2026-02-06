@@ -1,0 +1,1 @@
+{{union_tables_by_prefix(database='STAGING', schema ='dbt_mrana_raw', prefix = "sgt_orders__")}}
