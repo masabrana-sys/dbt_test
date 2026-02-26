@@ -1,34 +1,55 @@
-{{ config(materialized='table') }}
-
 with customers as (
-    select * from {{ ref('sgt_customer__jaffle_shop_raw') }}
+
+    select
+        id as customer_id,
+        first_name,
+        last_name
+
+    from raw.jaffle_shop.customers
+
 ),
+
 orders as (
-    select * from {{ ref('sgt_orders__jaffle_shop_raw') }}
+
+    select
+        id as order_id,
+        user_id as customer_id,
+        order_date,
+        status
+
+    from raw.jaffle_shop.orders
+
 ),
+
 customer_orders as (
+
     select
         customer_id,
-        min(ordered_at) as first_order_date,
-        max(ordered_at) as most_recent_order_date,
+
+        min(order_date) as first_order_date,
+        max(order_date) as most_recent_order_date,
         count(order_id) as number_of_orders
+
     from orders
+
     group by 1
 
 ),
+
 
 final as (
 
     select
         customers.customer_id,
-        customers.name,
+        customers.first_name,
+        customers.last_name,
         customer_orders.first_order_date,
         customer_orders.most_recent_order_date,
-        orders.order_status,
         coalesce(customer_orders.number_of_orders, 0) as number_of_orders
+
     from customers
-    left join customer_orders on customers.customer_id = customer_orders.customer_id
-    left join orders on customers.customer_id = orders.customer_id
+
+    left join customer_orders using (customer_id)
 
 )
 

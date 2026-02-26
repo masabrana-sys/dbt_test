@@ -1,0 +1,15 @@
+snowflake_test:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      threads: 16
+      account: ska67070
+      user: cse_test_user
+      database: STAGING
+      warehouse: TRANSFORMING
+      schema: dbt_mrana_raw_ci
+      role: TRANSFORMER
+      private_key_path: /Users/masabrana/Documents/rsa_key.p8
+      private_key_passphrase: welding-danvers-tidying-TALENTED
+      
