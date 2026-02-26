@@ -1,5 +1,4 @@
-name: 'snowflake_test_ci'   # Project name (just metadata)
-profile: snowflake_test
+name: 'snowflake_test'   # Project name (just metadata)
 version: '1.0'           # Project version (metadata)
 
 models:
