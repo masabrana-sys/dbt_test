@@ -1,4 +1,4 @@
-name: 'snowflake_test'   # Project name (just metadata)
+name: 'jaffle_shop'   # Project name (just metadata)
 version: '1.0'           # Project version (metadata)
 
 models:
