@@ -1,7 +1,9 @@
-name: 'snowflake_test'   # Project name (just metadata)
-version: '1.0'           # Project version (metadata)
+name: 'jaffle_shop'
+version: '1.0'
+config-version: 2
 
 models:
+  jaffle_shop:
     staging:
       +materialized: view
     marts:
