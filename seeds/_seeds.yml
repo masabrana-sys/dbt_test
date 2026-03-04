@@ -1,0 +1,14 @@
+version: 2.0
+seeds:
+  - name: employees
+    description: a csv to map customer id to employee id
+    columns:
+      - name: employee_id
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+          
+        
+      
+  
