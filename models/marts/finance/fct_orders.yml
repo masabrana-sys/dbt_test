@@ -1,9 +1,13 @@
+version: 2
+
 models:
   - name: fct_orders
-    latest_version: 2
     config:
+      group: finance
+      access: public
       contract:
         enforced: true
+    latest_version: 2
     columns:
       - name: order_id
         data_type: number
@@ -15,16 +19,16 @@ models:
         data_type: number
       - name: order_date
         data_type: date
-    versions: 
+    versions:
       - v: 1
         deprecation_date: "2026-03-01"
       - v: 2
-        config: 
+        config:
           alias: fct_orders
         columns:
-          - name: order_amount 
+          - name: order_amount
             data_type: number
           - name: created_at
             data_type: date
-          - include: all 
-            exclude: [amount]
+          - include: all
+            exclude: ["amount"]
