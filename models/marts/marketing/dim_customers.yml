@@ -1,0 +1,28 @@
+models:
+- name: dim_customers
+  description: This model provides a comprehensive view of customer data, consolidating
+    information from various sources to facilitate customer analysis and reporting.
+    It serves as a central repository for customer attributes and metrics, enabling
+    better customer segmentation and insights.
+  config:
+    group: finance
+    access: public
+  columns:
+  - name: customer_id
+    description: A unique identifier for each customer.
+  - name: customer_name
+    description: The full name of the customer.
+  - name: email
+    description: The email address of the customer.
+  - name: phone_number
+    description: The contact phone number of the customer.
+  - name: created_at
+    description: The timestamp when the customer record was created, in UTC.
+  - name: updated_at
+    description: The timestamp when the customer record was last updated, in UTC.
+  - name: is_active
+    description: Indicates whether the customer is currently active.
+  - name: loyalty_points
+    description: The total number of loyalty points accumulated by the customer.
+  - name: customer_since_date
+    description: The date when the customer first joined or was registered.
