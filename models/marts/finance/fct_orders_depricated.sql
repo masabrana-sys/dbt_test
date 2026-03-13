@@ -9,7 +9,7 @@ payments as (
 order_payments as (
     select
         order_id,
-        sum (case when status = 'success' then payment_amount end) as amount
+        sum (case when status = 'success' then payment_amount end) as order_amount
 
     from payments
     group by 1
@@ -21,10 +21,11 @@ order_payments as (
         orders.order_id,
         orders.customer_id,
         orders.order_date,
-        coalesce (order_payments.amount, 0) as amount
-
+        coalesce (order_payments.order_amount, 0) as order_amount,
+        payments.created_at 
     from orders
     left join order_payments using (order_id)
+    left join payments using (order_id)
 )
 
 select * from final

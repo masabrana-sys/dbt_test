@@ -13,20 +13,20 @@ models:
           - type: not_null
       - name: customer_id
         data_type: number
-      - name: amount
+      - name: order_amount
+        data_tests:
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: ">= 5"
+              config:
+               severity: warn
+          - dbt_expectations.expect_column_values_to_be_between: 
+              arguments:             
+                min_value: 0
+                row_condition: "order_id is not null" 
+                strictly: false
         data_type: number
       - name: order_date
         data_type: date
-    versions:
-      - v: 1
-        deprecation_date: "2026-03-01"
-      - v: 2
-        config:
-          alias: fct_orders
-        columns:
-          - name: order_amount
-            data_type: number
-          - name: created_at
-            data_type: date
-          - include: all
-            exclude: ["amount"]
+      - name: created_at
+        data_type: date
