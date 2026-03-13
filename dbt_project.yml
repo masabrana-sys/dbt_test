@@ -1,5 +1,5 @@
-name: 'jaffle_shop'
-version: '1.0'
+name: jaffle_shop
+version: 1.0
 config-version: 2
 
 models:
@@ -8,3 +8,9 @@ models:
       +materialized: view
     marts:
       +materialized: table
+vars:
+  dbt_meta_testing:
+    required_tests:
+      staging:
+        jaffle_shop:
+          "unique|not_null": 2
