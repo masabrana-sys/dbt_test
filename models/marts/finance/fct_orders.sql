@@ -23,6 +23,7 @@ order_payments as (
         orders.order_date,
         coalesce (order_payments.order_amount, 0) as order_amount,
         payments.created_at 
+        -- testing ci --
     from orders
     left join order_payments using (order_id)
     left join payments using (order_id)
