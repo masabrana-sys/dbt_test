@@ -14,3 +14,5 @@ vars:
       staging:
         jaffle_shop:
           "unique|not_null": 2
+flags:
+  require_generic_test_arguments_property: true
