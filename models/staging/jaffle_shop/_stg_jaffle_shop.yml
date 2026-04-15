@@ -3,7 +3,7 @@ models:
     description: Staged customer data from our jaffle shop app.
     config:
       group: finance
-      access: private
+      access: public
     columns:
       - name: customer_id
         description: The primary key for customers.

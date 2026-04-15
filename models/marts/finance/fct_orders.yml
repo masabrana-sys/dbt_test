@@ -30,3 +30,13 @@ models:
         data_type: date
       - name: created_at
         data_type: date
+
+semantic_models:
+  - name: fct_orders
+    model: ref('fct_orders')
+    primary_entity: order
+    entities:
+      - name: order
+        type: primary
+        expr: order_id
+
