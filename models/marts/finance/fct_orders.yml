@@ -11,32 +11,48 @@ models:
         data_type: number
         constraints:
           - type: not_null
+        entity:
+          type: primary
+          name: order
       - name: customer_id
         data_type: number
+        entity:
+          type: foreign
+          name: customer
       - name: order_amount
         data_tests:
           - dbt_utils.expression_is_true:
               arguments:
                 expression: ">= 5"
               config:
-               severity: warn
-          - dbt_expectations.expect_column_values_to_be_between: 
-              arguments:             
+                severity: warn
+          - dbt_expectations.expect_column_values_to_be_between:
+              arguments:
                 min_value: 0
-                row_condition: "order_id is not null" 
+                row_condition: "order_id is not null"
                 strictly: false
         data_type: number
       - name: order_date
         data_type: date
+        dimension:
+          type: time
+        granularity: day
       - name: created_at
         data_type: date
 
-semantic_models:
-  - name: fct_orders
-    model: ref('fct_orders')
-    primary_entity: order
-    entities:
-      - name: order
-        type: primary
+        dimension:
+          type: time
+        granularity: day
+    semantic_model:
+      enabled: true
+    metrics:
+      - name: order_count
+        agg: count
         expr: order_id
-
+        type: simple
+        hidden: true
+      - name: total_revenue
+        agg: sum
+        expr: order_amount
+        type: simple
+        hidden: true
