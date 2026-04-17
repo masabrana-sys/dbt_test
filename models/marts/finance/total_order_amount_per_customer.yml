@@ -1,9 +1,6 @@
 metrics:
   - name: total_order_amount_per_customer
-    type: derived
+    type: ratio
     label: Total Order Amount Per Customer
-    type_params:
-      expr: total_revenue / customer_order_count
-      metrics:
-        - name: total_revenue
-        - name: customer_order_count
+    numerator: total_revenue
+    denominator: customer_order_count
