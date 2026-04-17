@@ -55,17 +55,9 @@ models:
         agg: sum
         expr: order_amount
         type: simple
-        hidden: true
+        label: Total Revenue
       - name: customer_order_count
         agg: count_distinct
         expr: order_id
         type: simple
-        hidden: true
-      - name: total_order_amount_per_customer
-        label: Total Order Amount Per Customer
-        type: derived
-        type_params:
-          expr: total_revenue / customer_order_count
-          metrics:
-            - name: total_revenue
-            - name: customer_order_count
+        label: Customer Order Count
