@@ -1,0 +1,6 @@
+metrics:
+  - name: total_order_amount_per_customer
+    type: ratio
+    label: Total Order Amount Per Customer
+    numerator: total_revenue
+    denominator: customer_order_count
