@@ -8,3 +8,4 @@ models:
     columns:
       - name: date_day
         description: A single date, used as the time spine for MetricFlow
+        granularity: day
