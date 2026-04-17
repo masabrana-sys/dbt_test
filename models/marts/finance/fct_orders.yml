@@ -56,3 +56,8 @@ models:
         expr: order_amount
         type: simple
         hidden: true
+      - name: customer_order_count
+        agg: count_distinct
+        expr: order_id
+        type: simple
+        hidden: true
