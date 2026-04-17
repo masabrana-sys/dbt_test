@@ -1,9 +1,23 @@
 metrics:
+  - name: revenue_from_orders
+    type: simple
+    label: Revenue From Orders
+    type_params:
+      measure:
+        name: total_revenue
+
+  - name: orders_per_customer
+    type: simple
+    label: Orders Per Customer
+    type_params:
+      measure:
+        name: customer_order_count
+
   - name: total_order_amount_per_customer
     type: derived
     label: Total Order Amount Per Customer
     type_params:
-      expr: total_revenue / customer_order_count
+      expr: revenue_from_orders / orders_per_customer
       metrics:
-        - name: total_revenue
-        - name: customer_order_count
+        - name: revenue_from_orders
+        - name: orders_per_customer
