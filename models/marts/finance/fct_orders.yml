@@ -39,7 +39,6 @@ models:
         granularity: day
       - name: created_at
         data_type: date
-
         dimension:
           type: time
         granularity: day
@@ -51,13 +50,16 @@ models:
         expr: order_id
         type: simple
         hidden: true
+        agg_time_dimension: order_date
       - name: total_revenue
         agg: sum
         expr: order_amount
         type: simple
         label: Total Revenue
+        agg_time_dimension: order_date
       - name: customer_order_count
         agg: count_distinct
         expr: order_id
         type: simple
         label: Customer Order Count
+        agg_time_dimension: order_date
