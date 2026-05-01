@@ -1,0 +1,5 @@
+models:
+  - name: fct_cross_project_consumer
+    description: Consumer model referencing a versioned public model in jaffle_shop_producer via cross-project ref.
+    config:
+      materialized: table
