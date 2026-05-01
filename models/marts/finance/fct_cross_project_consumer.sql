@@ -1,4 +1,3 @@
--- Cross-project ref to jaffle_shop_producer's versioned public model
--- Reproduces ticket/120828: ref breaks when versioning is added to the producer model
+-- Workaround: must specify version explicitly when producer model is versioned
 select *
-from {{ ref('jaffle_shop_producer', 'fct_orders_public') }}
+from {{ ref('jaffle_shop_producer', 'fct_orders_public', version=1) }}
