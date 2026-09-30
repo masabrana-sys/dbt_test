@@ -1,0 +1,56 @@
+models:
+  - name: fct_lab_orders
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_id
+        data_type: integer
+        constraints:
+          - type: not_null
+        data_tests:
+          - unique
+      - name: customer_id
+        data_type: integer
+      - name: first_name
+        data_type: varchar
+      - name: status
+        data_type: varchar
+      - name: amount_cents
+        data_type: integer
+        # Exercise 5: apply the custom generic test by uncommenting these two lines
+        # data_tests:
+        #   - lab_is_positive
+      - name: ordered_at
+        data_type: timestamp_ntz
+
+  - name: lab_customers
+    latest_version: 1
+    versions:
+      - v: 1
+      - v: 2
+
+unit_tests:
+  - name: test_lab_is_large_order
+    model: int_lab_orders_enriched
+    given:
+      - input: ref('stg_lab_orders')
+        rows:
+          - {order_id: 1, customer_id: 1, status: completed, amount_cents: 4999}
+          - {order_id: 2, customer_id: 1, status: completed, amount_cents: 5000}
+      - input: ref('stg_lab_customers')
+        rows:
+          - {customer_id: 1, first_name: Ana}
+    expect:
+      rows:
+        - {order_id: 1, first_name: Ana, is_large_order: false}
+        - {order_id: 2, first_name: Ana, is_large_order: true}
+
+exposures:
+  - name: lab_revenue_dashboard
+    type: dashboard
+    maturity: low
+    owner:
+      name: Masab Rana
+    depends_on:
+      - ref('fct_lab_orders')
