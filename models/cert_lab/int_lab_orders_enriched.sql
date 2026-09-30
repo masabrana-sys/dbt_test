@@ -1,4 +1,3 @@
--- Exercise 6: change 'view' to 'ephemeral' here
 {{ config(materialized='view') }}
 
 select

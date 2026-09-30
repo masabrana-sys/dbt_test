@@ -18,9 +18,6 @@ models:
         data_type: varchar
       - name: amount_cents
         data_type: integer
-        # Exercise 5: apply the custom generic test by uncommenting these two lines
-        # data_tests:
-        #   - lab_is_positive
       - name: ordered_at
         data_type: timestamp_ntz
 

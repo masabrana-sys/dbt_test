@@ -1,4 +1,3 @@
--- Exercise 2: rename order_id to id below, then run dbt run -s fct_lab_orders
 {{ config(materialized='table') }}
 
 select
